@@ -1,6 +1,8 @@
 import { Handler, HandlerEvent } from '@netlify/functions';
+import { v4 as uuidv4 } from 'uuid';
 
 import { bodyParamsType } from './anime.d';
+import { animeQuery, searchApi } from './utils';
 
 const defaultParams: bodyParamsType = {
   text: '',
@@ -11,9 +13,8 @@ const defaultParams: bodyParamsType = {
 const handler: Handler = async (event: HandlerEvent) => {
   const { body, httpMethod } = event;
   const bodyParams: bodyParamsType = body ? JSON.parse(body) : defaultParams;
-  const securityToken: string = process.env.TOKEN;
 
-  console.log(bodyParams);
+  const securityToken: string = process.env.TOKEN || uuidv4();
 
   if (httpMethod === 'GET') {
     return { statusCode: 404 };
@@ -32,14 +33,18 @@ const handler: Handler = async (event: HandlerEvent) => {
     return { statusCode: 401 };
   }
 
-  // TODO: Call the API to get anime info
+  // Call the API to get anime info
+  const variables = {
+    anime: bodyParams.text,
+  };
+
+  const response = await searchApi(variables, animeQuery);
   // TODO: Parse the response to to what slack expects
 
   try {
-    const subject = 'World';
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: `Hello ${subject}` }),
+      body: JSON.stringify(response),
     };
   } catch (error) {
     return { statusCode: 500, body: error.toString() };
