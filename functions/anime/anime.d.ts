@@ -1,37 +1,37 @@
-export interface bodyParamsType {
+export type bodyParamsType = {
   text: string;
   response_url: string;
   token: string;
-}
+};
 
-export interface searchVariablesType {
+export type searchVariablesType = {
   anime: string;
-}
+};
 
-interface externalLinksType {
+type externalLinksType = {
   url: string;
   site: string;
-}
+};
 
-interface nextAiringEpisodeType {
+type nextAiringEpisodeType = {
   timeUntilAiring?: number;
   episode?: number;
-}
+};
 
-export interface animeModelType {
+export type animeModelType = {
   id: number;
   bannerImage: string;
   title: { [key: string]: string };
   status: string;
   description: string;
-  nextAiringEpisode: nextAiringEpisodeType | null;
+  nextAiringEpisode: nextAiringEpisodeType;
   episodes: number;
-  genres: [string];
-  externalLinks: [externalLinksType];
-}
+  genres: string[];
+  externalLinks: externalLinksType[];
+};
 
-export interface animeResponseType {
+export type animeResponseType = {
   data: {
     Media: animeModelType;
   };
-}
+};

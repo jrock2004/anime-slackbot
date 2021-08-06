@@ -1,4 +1,4 @@
-import fetch, { Response, FetchError } from 'node-fetch';
+import fetch, { Response } from 'node-fetch';
 
 import {
   animeModelType,
@@ -18,7 +18,7 @@ import {
 export const searchApi = async (
   variables: searchVariablesType,
   query: string
-): Promise<animeResponseType | FetchError | string> => {
+): Promise<animeResponseType> => {
   try {
     const url = 'https://graphql.anilist.co';
     const options = {
