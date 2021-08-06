@@ -13,7 +13,10 @@ const defaultParams: bodyParamsType = {
 
 const handler: Handler = async (event: HandlerEvent) => {
   const { body, httpMethod } = event;
-  const bodyParams: bodyParamsType = body ? JSON.parse(body) : defaultParams;
+
+  const bodyParams: bodyParamsType = body
+    ? JSON.parse(`{"${body.replace(/&/g, '", "').replace(/=/g, '": "')}"}`)
+    : defaultParams;
 
   const securityToken: string = process.env.TOKEN || uuidv4();
 
