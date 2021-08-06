@@ -1,11 +1,24 @@
 import fetch, { Response, FetchError } from 'node-fetch';
 
-import { animeResponseType, searchVariablesType } from './anime.d';
+import {
+  animeModelType,
+  animeResponseType,
+  searchVariablesType,
+} from './anime.d';
+import {
+  getBannerImage,
+  getTitle,
+  getDescription,
+  getNextEpisode,
+  getGenres,
+  getExternalLinks,
+  getSource,
+} from './helpers';
 
 export const searchApi = async (
   variables: searchVariablesType,
   query: string
-): Promise<animeResponseType | FetchError> => {
+): Promise<animeResponseType | FetchError | string> => {
   try {
     const url = 'https://graphql.anilist.co';
     const options = {
@@ -24,6 +37,21 @@ export const searchApi = async (
   } catch (error) {
     return error.message;
   }
+};
+
+export const getResponseText = (anime: animeModelType): string => {
+  let responseText = '';
+  const isMarkdown = false;
+
+  responseText += getBannerImage(anime, isMarkdown);
+  responseText += getTitle(anime, isMarkdown);
+  responseText += getDescription(anime);
+  responseText += getNextEpisode(anime, isMarkdown);
+  responseText += getGenres(anime, isMarkdown);
+  responseText += getExternalLinks(anime, isMarkdown);
+  responseText += getSource(isMarkdown);
+
+  return responseText;
 };
 
 export const animeQuery = `

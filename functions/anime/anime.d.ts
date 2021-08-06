@@ -13,18 +13,25 @@ interface externalLinksType {
   site: string;
 }
 
+interface nextAiringEpisodeType {
+  timeUntilAiring?: number;
+  episode?: number;
+}
+
+export interface animeModelType {
+  id: number;
+  bannerImage: string;
+  title: { [key: string]: string };
+  status: string;
+  description: string;
+  nextAiringEpisode: nextAiringEpisodeType | null;
+  episodes: number;
+  genres: [string];
+  externalLinks: [externalLinksType];
+}
+
 export interface animeResponseType {
   data: {
-    Media: {
-      id: number;
-      bannerImage: string;
-      title: [key: string];
-      status: string;
-      description: string;
-      nextAiringEpisode: string | null;
-      episodes: number;
-      genres: [string];
-      externalLinks: [externalLinksType];
-    };
+    Media: animeModelType;
   };
 }
