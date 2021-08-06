@@ -4,6 +4,7 @@
   "description": "A slackbot that allows you to look up your favorite anime",
   "main": "index.js",
   "scripts": {
+    "dev": "TOKEN=9999 netlify dev",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install"
   },
@@ -21,9 +22,21 @@
     "url": "https://github.com/jrock2004/anime-slackbot/issues"
   },
   "homepage": "https://github.com/jrock2004/anime-slackbot#readme",
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "extends": [
+      "plugin:@typescript-eslint/recommended"
+    ]
+  },
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
+    "@typescript-eslint/eslint-plugin": "^4.29.0",
+    "@typescript-eslint/parser": "^4.29.0",
+    "eslint": "^7.32.0",
     "husky": "^7.0.0",
     "prettier": "^2.3.2",
     "typescript": "^4.3.5"
