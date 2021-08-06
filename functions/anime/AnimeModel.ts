@@ -27,8 +27,8 @@ export default class AnimeModel {
     this.title = title;
     this.status = status;
     this.description = description;
-    this.nextAiringEpisode = nextAiringEpisode;
-    this.episodes = episodes;
+    (this.nextAiringEpisode = nextAiringEpisode ? nextAiringEpisode : {}),
+      (this.episodes = episodes);
     this.genres = genres;
     this.externalLinks = externalLinks;
   }

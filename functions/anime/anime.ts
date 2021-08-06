@@ -45,7 +45,7 @@ const handler: Handler = async (event: HandlerEvent) => {
   const response = await searchApi(variables, animeQuery);
 
   // Parse the response to to what slack expects
-  if (response.errors) {
+  if ('errors' in response) {
     return {
       statusCode: 500,
       body: `Something went wrong with looking up ${bodyParams.text}`,

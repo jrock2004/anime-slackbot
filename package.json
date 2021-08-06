@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "TOKEN=9999 netlify dev",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --env=jsdom",
+    "test:watch": "jest --env=jsdom --watch",
+    "test:coverage": "jest --env=jsdom --coverage",
     "prepare": "husky install"
   },
   "repository": {
@@ -34,6 +36,7 @@
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
+    "@types/jest": "^26.0.24",
     "@types/node": "^16.4.13",
     "@types/node-fetch": "^2.5.12",
     "@types/uuid": "^8.3.1",
@@ -41,7 +44,10 @@
     "@typescript-eslint/parser": "^4.29.0",
     "eslint": "^7.32.0",
     "husky": "^7.0.0",
+    "jest": "^27.0.6",
     "prettier": "^2.3.2",
+    "ts-jest": "^27.0.4",
+    "ts-node": "^10.1.0",
     "typescript": "^4.3.5"
   },
   "dependencies": {
