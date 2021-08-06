@@ -1,0 +1,29 @@
+{
+  "name": "anime-slackbot",
+  "version": "1.0.0",
+  "description": "A slackbot that allows you to look up your favorite anime",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jrock2004/anime-slackbot.git"
+  },
+  "keywords": [
+    "anime",
+    "slackbot"
+  ],
+  "author": "John Costanzo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jrock2004/anime-slackbot/issues"
+  },
+  "homepage": "https://github.com/jrock2004/anime-slackbot#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
+    "husky": "^7.0.0"
+  }
+}
