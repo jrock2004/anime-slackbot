@@ -41,7 +41,6 @@ const handler: Handler = async (event: HandlerEvent) => {
   const variables = {
     anime: bodyParams.text,
   };
-
   const response = await searchApi(variables, animeQuery);
 
   // Parse the response to to what slack expects
@@ -52,8 +51,9 @@ const handler: Handler = async (event: HandlerEvent) => {
     };
   }
 
+  const isMarkdown = bodyParams.response_url === 'markdown' || false;
   const anime = new AnimeModel(response.data.Media);
-  const responseText = getResponseText(anime);
+  const responseText = getResponseText(anime, isMarkdown);
 
   try {
     return {

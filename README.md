@@ -8,9 +8,48 @@ A slash command bot that can be used for integrating with slack
 
 ![Screenshot of an example of what bot will return](image-slack-screenshot.png?raw=true)
 
-## Anime Sources
+## API Documentation
 
-This bot is making an API call to get its information from [https://anilist.co](https://anilist.co)
+### anime
+
+**POST** - /anime
+
+| Parameter | Type | Description |
+| --------- | ---- | ----------- |
+| text\* | string | The name of the anime you want to look up. *Ex. One Piece* |
+| response\_url\* | *slack \| markdown* as string | Either of these 2 values are required. If you pass something else the code will just default to slack |
+| token\* | string | Used to auth to the API |
+
+Possible responses - Format `application/json`
+
+<table>
+<tr>
+<td> Status </td> <td> Response </td>
+</tr>
+<tr>
+<td> 200 </td>
+<td>
+
+```json
+{
+  "text": "string",
+  "response_type": "response"
+}
+```
+</td>
+</tr>
+<tr>
+<td> 400 </td>
+<td>
+
+```json
+{
+  "message": "string"
+}
+```
+</td>
+</tr>
+</table>
 
 ## Local Development
 
@@ -35,11 +74,7 @@ response_url=slack
 token=9999
 ```
 
-| Key          | Value                                                                                                                                    |
-| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| text         | This is the name of the anime you want to look up                                                                                        |
-| response_url | Slack returns this property with the value of slack. We use this to decide if the returned string is formatted for slack or markdown     |
-| token        | This is the token you need to pass to the server that matches the token you set when starting the server                                 |
+See more information in the API documentation above
 
 ## Run this on Netlify
 
@@ -48,3 +83,7 @@ If you want to be able to use this code to have your own anime slash command, yo
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/jrock2004/anime-slackbot)
 
 After this is deployed you will want to set up a new environment variable in Netlify called `TOKEN`. The value of the environment variable should be the string you want API callers to pass for the token parameter. For a slack slash command, it will generate a token for you. You should take that and put that in here so it works. After setting this you should re-deploy your netlify site for the changes to take effect.
+
+## Anime Sources
+
+This bot is making an API call to get its information from [https://anilist.co](https://anilist.co)
