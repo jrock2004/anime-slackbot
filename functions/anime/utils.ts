@@ -39,9 +39,11 @@ export const searchApi = async (
   }
 };
 
-export const getResponseText = (anime: animeModelType): string => {
+export const getResponseText = (
+  anime: animeModelType,
+  isMarkdown: boolean
+): string => {
   let responseText = '';
-  const isMarkdown = false;
 
   responseText += getBannerImage(anime, isMarkdown);
   responseText += getTitle(anime, isMarkdown);
