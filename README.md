@@ -6,7 +6,11 @@ A slash command bot that can be used for integrating with slack
 
 ## Screenshots
 
-![Screenshot of an example of what bot will return](image-slack-screenshot.png?raw=true)
+**What it will looks like in Slack**
+![A sample of what the output will look like in slack](image-slack-screenshot.png?raw=true)
+
+**What it will look like in markdown**
+![A sample of what the output will look like in markdown](image-markdown-screenshot.png?raw=true)
 
 ## API Documentation
 
