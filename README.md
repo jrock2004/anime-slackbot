@@ -46,3 +46,5 @@ token=9999
 If you want to be able to use this code to have your own anime slash command, you can click the following button to deploy this code to your own Netlify. 
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/jrock2004/anime-slackbot)
+
+After this is deployed you will want to set up a new environment variable in Netlify called `TOKEN`. The value of the environment variable should be the string you want API callers to pass for the token parameter. For a slack slash command, it will generate a token for you. You should take that and put that in here so it works. After setting this you should re-deploy your netlify site for the changes to take effect.
