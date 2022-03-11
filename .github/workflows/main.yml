@@ -2,7 +2,7 @@ name: 'Anime Slackbot CI'
 
 on:
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   tests:
@@ -14,5 +14,5 @@ jobs:
         uses: actions/setup-node@v2
       - name: Install dependencies
         run: npm install
-      - name: Run Tests
-        run: npm test
+      # - name: Run Tests
+      #   run: npm test
