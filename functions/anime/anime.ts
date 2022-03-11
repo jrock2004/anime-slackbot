@@ -15,7 +15,7 @@ const handler: Handler = async (event: HandlerEvent) => {
   const { body, httpMethod } = event;
 
   const bodyParams: bodyParamsType = body
-    ? JSON.parse(`{"${body.replace(/&/g, '", "').replace(/=/g, '": "')}"}`)
+    ? JSON.parse(body)
     : defaultParams;
 
   const securityToken: string = process.env.TOKEN || uuidv4();
