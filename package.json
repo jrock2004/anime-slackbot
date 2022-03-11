@@ -57,5 +57,8 @@
     "node-fetch": "^3.2.2",
     "string-strip-html": "^9.1.6",
     "uuid": "^8.3.2"
+  },
+  "engines": {
+    "node": ">=14.19.0"
   }
 }
