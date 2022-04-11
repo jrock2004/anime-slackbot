@@ -5633,10 +5633,10 @@ html-encoding-sniffer@^2.0.1:
   dependencies:
     whatwg-encoding "^1.0.5"
 
-html-entities@^2.3.2:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/html-entities/-/html-entities-2.3.2.tgz#760b404685cb1d794e4f4b744332e3b00dcfe488"
-  integrity sha512-c3Ab/url5ksaT0WyleslpBEthOzWhrjQbg75y7XUsfSzi3Dgzt0l8w5e7DylRn15MTlMMD58dTfzddNS2kcAjQ==
+html-entities@^2.3.3:
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/html-entities/-/html-entities-2.3.3.tgz#117d7626bece327fc8baace8868fa6f5ef856e46"
+  integrity sha512-DV5Ln36z34NNTDgnz0EWGBLZENelNAtkiFA4kyNOG2tDI6Mz1uSWiq1wAKdyjnJwyDiDO7Fa2SO1CTxPXL8VxA==
 
 html-escaper@^2.0.0:
   version "2.0.2"
@@ -9741,12 +9741,12 @@ string-similarity@^4.0.4:
   resolved "https://registry.yarnpkg.com/string-similarity/-/string-similarity-4.0.4.tgz#42d01ab0b34660ea8a018da8f56a3309bb8b2a5b"
   integrity sha512-/q/8Q4Bl4ZKAPjj8WerIBJWALKkaPRfrvhfF8k/B23i4nzrlRj2/go1m90In7nG/3XDSbOo0+pu6RvCTM9RGMQ==
 
-string-strip-html@^9.1.7:
-  version "9.1.7"
-  resolved "https://registry.yarnpkg.com/string-strip-html/-/string-strip-html-9.1.7.tgz#d3eb11676f2f3b3b56f65d78318c31c463c18ca4"
-  integrity sha512-QSzekD/F7GbvdxhLLqFRWTBilfCvLQM6mRENegZ8us8KX7jnc+d0TM1UWWpZFeFG/jS2VKbvpWD4AN9c4eMnfQ==
+string-strip-html@^9.1.8:
+  version "9.1.8"
+  resolved "https://registry.yarnpkg.com/string-strip-html/-/string-strip-html-9.1.8.tgz#34509c16654458291ef50d7265864db1964784de"
+  integrity sha512-1TDKtKqA2YpuSHvAXaLkJVokoJnCA6fy/9OkH/xRWinIKKDF5ouw2iPUWmDUdcuUxu/FqBV0q2N81Fmhl39dxw==
   dependencies:
-    html-entities "^2.3.2"
+    html-entities "^2.3.3"
     lodash.isplainobject "^4.0.6"
     lodash.trim "^4.5.1"
     lodash.without "^4.4.0"
