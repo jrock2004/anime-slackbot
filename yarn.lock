@@ -5633,10 +5633,10 @@ html-encoding-sniffer@^2.0.1:
   dependencies:
     whatwg-encoding "^1.0.5"
 
-html-entities@^2.3.2:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/html-entities/-/html-entities-2.3.2.tgz#760b404685cb1d794e4f4b744332e3b00dcfe488"
-  integrity sha512-c3Ab/url5ksaT0WyleslpBEthOzWhrjQbg75y7XUsfSzi3Dgzt0l8w5e7DylRn15MTlMMD58dTfzddNS2kcAjQ==
+html-entities@^2.3.3:
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/html-entities/-/html-entities-2.3.3.tgz#117d7626bece327fc8baace8868fa6f5ef856e46"
+  integrity sha512-DV5Ln36z34NNTDgnz0EWGBLZENelNAtkiFA4kyNOG2tDI6Mz1uSWiq1wAKdyjnJwyDiDO7Fa2SO1CTxPXL8VxA==
 
 html-escaper@^2.0.0:
   version "2.0.2"
@@ -8843,26 +8843,26 @@ range-parser@~1.2.1:
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
   integrity sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==
 
-ranges-apply@^6.0.12:
-  version "6.0.12"
-  resolved "https://registry.yarnpkg.com/ranges-apply/-/ranges-apply-6.0.12.tgz#71e0acd44c1259e15dd757f727da91dcc133c8cb"
-  integrity sha512-uLCboDelwCftR4/QeHPHw+YDZf9bFJssgUNyw3q22WB4foBiozc9dzE5lh1as04NTL7zMGWdmff4TqKX7eq/Ag==
+ranges-apply@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/ranges-apply/-/ranges-apply-6.1.0.tgz#fef44bb600379b13c12035df1f236995a37f78bf"
+  integrity sha512-ZuXh2e2Nbwm+jF828ZVU6F53NYDEm/g89q4VvnUTpWaT1tFj5/E3kB94q90yjM+Ho1Xi0cBMjKdzUMBnVoqbVQ==
   dependencies:
-    ranges-merge "^8.0.12"
+    ranges-merge "^8.1.0"
     tiny-invariant "^1.2.0"
 
-ranges-merge@^8.0.12:
-  version "8.0.12"
-  resolved "https://registry.yarnpkg.com/ranges-merge/-/ranges-merge-8.0.12.tgz#973259b2504cef6053fd5b9f1abf820c597564a5"
-  integrity sha512-rYrql9CEh32JUfVnKH600fC8KE4hlhLuhDoqXIXopqT4mFyFhrer+Hj+aMQpSqe34MK+1dZ5SxymnKerNgC37g==
+ranges-merge@^8.1.0:
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/ranges-merge/-/ranges-merge-8.1.0.tgz#cc9f9c7b7dad8960938ba2c19f5e8eec1a50f494"
+  integrity sha512-bbfkqoVzGkXQ6aLGd50BI9uAsnehf63pNXEmQ3tuAMLRRP1iI1cnVHaA6diKgtYGDftYh8xCKHhpi6L3vSvB8Q==
   dependencies:
-    ranges-push "^6.0.12"
+    ranges-push "^6.1.0"
     ranges-sort "^5.0.12"
 
-ranges-push@^6.0.12:
-  version "6.0.12"
-  resolved "https://registry.yarnpkg.com/ranges-push/-/ranges-push-6.0.12.tgz#d00c31f992f626947f5e04bc692dccb12b5b02bd"
-  integrity sha512-THUoFJyZUXl/KdWAKyMYaQ4vJBAmTyv4uz9j2EHpVwzetZdMUjdDUizO0nROGyh5pHEnb+wXmkPYYjBZEl08uQ==
+ranges-push@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/ranges-push/-/ranges-push-6.1.0.tgz#6599a2fcc25022d2db9f06558f46cabcea009856"
+  integrity sha512-10Cj8B39i/pM4XWyLxWwUC08aQCiPnoNdOwqcSVyiKgHd5+apam8qNNsdggQ2LAkGOUawv9XIzbvhc8c2GjTGg==
   dependencies:
     string-collapse-leading-whitespace "^6.0.12"
     string-trim-spaces-only "^4.0.12"
@@ -9741,17 +9741,17 @@ string-similarity@^4.0.4:
   resolved "https://registry.yarnpkg.com/string-similarity/-/string-similarity-4.0.4.tgz#42d01ab0b34660ea8a018da8f56a3309bb8b2a5b"
   integrity sha512-/q/8Q4Bl4ZKAPjj8WerIBJWALKkaPRfrvhfF8k/B23i4nzrlRj2/go1m90In7nG/3XDSbOo0+pu6RvCTM9RGMQ==
 
-string-strip-html@^9.1.7:
-  version "9.1.7"
-  resolved "https://registry.yarnpkg.com/string-strip-html/-/string-strip-html-9.1.7.tgz#d3eb11676f2f3b3b56f65d78318c31c463c18ca4"
-  integrity sha512-QSzekD/F7GbvdxhLLqFRWTBilfCvLQM6mRENegZ8us8KX7jnc+d0TM1UWWpZFeFG/jS2VKbvpWD4AN9c4eMnfQ==
+string-strip-html@^9.1.9:
+  version "9.1.9"
+  resolved "https://registry.yarnpkg.com/string-strip-html/-/string-strip-html-9.1.9.tgz#b011108c8b4760d646b0a1b16a58843819472ec8"
+  integrity sha512-1jV3V19eKVj4XLh9thzeWwdxpmn76W0mV4uC9fgbkEpd09lNWI41dXs90w1xHmzVYBir4htZzGPbmp1P/4XECg==
   dependencies:
-    html-entities "^2.3.2"
+    html-entities "^2.3.3"
     lodash.isplainobject "^4.0.6"
     lodash.trim "^4.5.1"
     lodash.without "^4.4.0"
-    ranges-apply "^6.0.12"
-    ranges-push "^6.0.12"
+    ranges-apply "^6.1.0"
+    ranges-push "^6.1.0"
     string-left-right "^5.0.12"
 
 string-trim-spaces-only@^4.0.12:
