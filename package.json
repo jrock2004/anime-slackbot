@@ -54,7 +54,7 @@
   "dependencies": {
     "@netlify/functions": "^1.0.0",
     "moment": "^2.29.3",
-    "node-fetch": "^3.2.4",
+    "node-fetch": "^3.2.6",
     "string-strip-html": "^9.1.12",
     "uuid": "^8.3.2"
   },
