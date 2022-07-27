@@ -8272,10 +8272,10 @@ range-parser@~1.2.1:
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
   integrity sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==
 
-ranges-apply@^6.1.4:
-  version "6.1.4"
-  resolved "https://registry.yarnpkg.com/ranges-apply/-/ranges-apply-6.1.4.tgz#54f6ca366f37a337a8348368a73cd068da72a780"
-  integrity sha512-j4ea53PG5HIHdHHvlS7KzodNocgUFOcBea2zyzSMb8MJdZW+dcW2hyelWfO6rnBRdAnO/CR1Ybr/9eDwVfcXug==
+ranges-apply@^6.1.5:
+  version "6.1.5"
+  resolved "https://registry.yarnpkg.com/ranges-apply/-/ranges-apply-6.1.5.tgz#b93062f947fbc962cd7657c1082b4264d4e84a0f"
+  integrity sha512-xLwTwuUvXs9i+li7y5s/r71IthyMJFvTGsZpvRrjSGJ1NH4zVjR3roKuZmHLqgiCMA32gn1nmBOyMhn6OELtSg==
   dependencies:
     ranges-merge "^8.1.4"
     tiny-invariant "^1.2.0"
@@ -9080,16 +9080,16 @@ string-similarity@^4.0.4:
   resolved "https://registry.yarnpkg.com/string-similarity/-/string-similarity-4.0.4.tgz#42d01ab0b34660ea8a018da8f56a3309bb8b2a5b"
   integrity sha512-/q/8Q4Bl4ZKAPjj8WerIBJWALKkaPRfrvhfF8k/B23i4nzrlRj2/go1m90In7nG/3XDSbOo0+pu6RvCTM9RGMQ==
 
-string-strip-html@^11.0.0:
-  version "11.0.0"
-  resolved "https://registry.yarnpkg.com/string-strip-html/-/string-strip-html-11.0.0.tgz#6d52e26c78dfbf6d2ce81891175ef1f54bdfad38"
-  integrity sha512-6JzSL4t3i6M0W1wg3nUAb6l4PSBcif8qFNaUQ5hmRtpe6jWJ0jhCv6bXZ6CtOy715ZSTplSBq/6QsWZAo6p37Q==
+string-strip-html@^11.0.1:
+  version "11.0.1"
+  resolved "https://registry.yarnpkg.com/string-strip-html/-/string-strip-html-11.0.1.tgz#85cf4be164cc46efdf77f5d5924133b8cb061af6"
+  integrity sha512-7Us+3NiJurKQex+gqTum3bTZ1urY7qM7fYYvT6zFqc0obX4TPVjKwQwsFkwnKuylG0yE+j878IuQOQuXEgAoqQ==
   dependencies:
     html-entities "^2.3.3"
     lodash.isplainobject "^4.0.6"
     lodash.trim "^4.5.1"
     lodash.without "^4.4.0"
-    ranges-apply "^6.1.4"
+    ranges-apply "^6.1.5"
     ranges-push "^6.1.4"
     string-left-right "^5.0.14"
 
