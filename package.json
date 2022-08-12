@@ -55,7 +55,7 @@
     "@netlify/functions": "^1.0.0",
     "moment": "^2.29.4",
     "node-fetch": "^3.2.10",
-    "string-strip-html": "^11.1.0",
+    "string-strip-html": "^11.2.0",
     "uuid": "^8.3.2"
   },
   "engines": {
