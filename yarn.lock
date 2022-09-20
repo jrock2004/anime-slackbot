@@ -9007,10 +9007,10 @@ string-similarity@^4.0.4:
   resolved "https://registry.yarnpkg.com/string-similarity/-/string-similarity-4.0.4.tgz#42d01ab0b34660ea8a018da8f56a3309bb8b2a5b"
   integrity sha512-/q/8Q4Bl4ZKAPjj8WerIBJWALKkaPRfrvhfF8k/B23i4nzrlRj2/go1m90In7nG/3XDSbOo0+pu6RvCTM9RGMQ==
 
-string-strip-html@^11.6.4:
-  version "11.6.4"
-  resolved "https://registry.yarnpkg.com/string-strip-html/-/string-strip-html-11.6.4.tgz#1772f735551f72129a6ca4b597b5ffa24b2f3b59"
-  integrity sha512-nEKbjygJaP5DhBhury9/+I9apUDgswu1xXH6F2MB+6lWtWW7ycSALmLu4tW8oK8o7moSeP6Sep/ljhbWsaf7rA==
+string-strip-html@^11.6.5:
+  version "11.6.5"
+  resolved "https://registry.yarnpkg.com/string-strip-html/-/string-strip-html-11.6.5.tgz#55b119d79f5a79cb41133baad15535112ff03b38"
+  integrity sha512-0zyZgOK7HKjYCASwZ6hTFjSgMAXHqrNdYKuO5d+8jyG/4Xd6QYHSr+K8mHM8BRKkT5oIQeDPwoMT27OfTK0Sog==
   dependencies:
     html-entities "^2.3.3"
     lodash.isplainobject "^4.0.6"
