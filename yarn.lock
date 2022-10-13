@@ -8225,13 +8225,13 @@ range-parser@~1.2.1:
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
   integrity sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==
 
-ranges-apply@^6.2.2:
-  version "6.2.2"
-  resolved "https://registry.yarnpkg.com/ranges-apply/-/ranges-apply-6.2.2.tgz#c0b82774829e8fcd23af22f7e8a3db055aced63a"
-  integrity sha512-ISCJw52YLx9m3EjhqlXwVc4pgwSUuMwWkzuYw8WqSExgYHu3ZA/oO6qh3RpPo2E91LiFdmQNF1fEuQUhDISfeQ==
+ranges-apply@^6.2.5:
+  version "6.2.5"
+  resolved "https://registry.yarnpkg.com/ranges-apply/-/ranges-apply-6.2.5.tgz#49b97a6ef15a5f817f96db9807cf72570bfb3868"
+  integrity sha512-X1MbRR9eczOqTNCBRqoIRzCIvL0ysO5iLBH7Q6n2SgNDsr/HL7mlyRkMVQytmjYWxJir2wDB5W82B5Q/QV8zKA==
   dependencies:
     ranges-merge "^8.2.2"
-    tiny-invariant "^1.2.0"
+    tiny-invariant "^1.3.1"
 
 ranges-merge@^8.2.2:
   version "8.2.2"
@@ -9031,16 +9031,16 @@ string-similarity@^4.0.4:
   resolved "https://registry.yarnpkg.com/string-similarity/-/string-similarity-4.0.4.tgz#42d01ab0b34660ea8a018da8f56a3309bb8b2a5b"
   integrity sha512-/q/8Q4Bl4ZKAPjj8WerIBJWALKkaPRfrvhfF8k/B23i4nzrlRj2/go1m90In7nG/3XDSbOo0+pu6RvCTM9RGMQ==
 
-string-strip-html@^11.6.9:
-  version "11.6.9"
-  resolved "https://registry.yarnpkg.com/string-strip-html/-/string-strip-html-11.6.9.tgz#bff3b4ffd82289df4c9197efd0db1f7077a40273"
-  integrity sha512-K0WZCPE29zeUjgSTFpigamZJcf9gIosVlyPDkPHu0CC6PCr0x7PWNEyQLgrjBl0c2/ZuK7mbxG6FUpu85v01Gw==
+string-strip-html@^11.6.13:
+  version "11.6.13"
+  resolved "https://registry.yarnpkg.com/string-strip-html/-/string-strip-html-11.6.13.tgz#b132232e4b1a15f97d452413b00ade5ce765a1d9"
+  integrity sha512-IpaoB3uCFmUaVPt/BeRFlaz/oG+WsvyLJy0bV5uTebgdw7KMM301jjVCWMebttXCOuPeSqjoZ7J6nkI2u3OZSQ==
   dependencies:
     html-entities "^2.3.3"
     lodash.isplainobject "^4.0.6"
     lodash.trim "^4.5.1"
     lodash.without "^4.4.0"
-    ranges-apply "^6.2.2"
+    ranges-apply "^6.2.5"
     ranges-push "^6.2.2"
     string-left-right "^5.1.2"
 
@@ -9387,10 +9387,10 @@ timed-out@^4.0.1:
   resolved "https://registry.yarnpkg.com/timed-out/-/timed-out-4.0.1.tgz#f32eacac5a175bea25d7fab565ab3ed8741ef56f"
   integrity sha1-8y6srFoXW+ol1/q1Zas+2HQe9W8=
 
-tiny-invariant@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/tiny-invariant/-/tiny-invariant-1.2.0.tgz#a1141f86b672a9148c72e978a19a73b9b94a15a9"
-  integrity sha512-1Uhn/aqw5C6RI4KejVeTg6mIS7IqxnLJ8Mv2tV5rTc0qWobay7pDUz6Wi392Cnc8ak1H0F2cjoRzb2/AW4+Fvg==
+tiny-invariant@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/tiny-invariant/-/tiny-invariant-1.3.1.tgz#8560808c916ef02ecfd55e66090df23a4b7aa642"
+  integrity sha512-AD5ih2NlSssTCwsMznbvwMZpJ1cbhkGd2uueNxzv2jDlEeZdU04JQfRnggJQ8DrcVBGjAsCKwFBbDlVNtEMlzw==
 
 tmp-promise@^3.0.2, tmp-promise@^3.0.3:
   version "3.0.3"
