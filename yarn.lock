@@ -8744,34 +8744,34 @@ range-parser@~1.2.1:
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
   integrity sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==
 
-ranges-apply@^6.2.12:
-  version "6.2.12"
-  resolved "https://registry.yarnpkg.com/ranges-apply/-/ranges-apply-6.2.12.tgz#88eb73acf221418786c246b69acf9bb788ffaca1"
-  integrity sha512-kvbXY6BNDpEAri/PlDZHlDyEAFvbAlfHGcIPQ6lg2BCifepx0t7knULy0ryvtsDuYCutK2ZVp+XTCMWcfaf/AQ==
+ranges-apply@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/ranges-apply/-/ranges-apply-7.0.0.tgz#f76bc47a95cd5b2e83b04b08271120ab20230d50"
+  integrity sha512-tIf7F0fHAKopcLbQ2Buldl3lFDbv/vJhuwyRX3a57gVORIDTE9FsrFn745l3MaCwI+JEzlC7S0PGcrvKJXTOdA==
   dependencies:
-    ranges-merge "^8.2.7"
+    ranges-merge "^9.0.0"
     tiny-invariant "^1.3.1"
 
-ranges-merge@^8.2.7:
-  version "8.2.7"
-  resolved "https://registry.yarnpkg.com/ranges-merge/-/ranges-merge-8.2.7.tgz#16994947654ae4ad1b12ab4a1bfed92d79be54d6"
-  integrity sha512-ymJfok6pW4vndF8wy6SeqnLGu5GH8k+MM+W4fAqif79HGNloNzwE0ijVmuRd8D7ulJnwo5BGzwpZpXYHYeLlMQ==
+ranges-merge@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/ranges-merge/-/ranges-merge-9.0.0.tgz#c01a167799aa5ce399a2470ee70a215fc3bf7c97"
+  integrity sha512-2Vzs03btql5ELVw2Iehlqe4Oz/C8BEIl6Eb5D65tWJNugjpTh65oXCq4tGY6Xdey3r1YPAHl+nAx3oUxIga34w==
   dependencies:
-    ranges-push "^6.2.7"
-    ranges-sort "^5.1.6"
+    ranges-push "^7.0.0"
+    ranges-sort "^6.0.0"
 
-ranges-push@^6.2.7:
-  version "6.2.7"
-  resolved "https://registry.yarnpkg.com/ranges-push/-/ranges-push-6.2.7.tgz#037f72250860f9fe37e6b6dd65b97b7890f98e9f"
-  integrity sha512-OX12airFLYK4/6dh3b82NRtGzpXyOWTmjiJzD/oMvzgZ2cfNbsa5qKLtf9AwZO6cVOpS2Li1l2mKTVjlM6MMpg==
+ranges-push@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/ranges-push/-/ranges-push-7.0.0.tgz#a1aa9cbadf5dc16a123e3df51255c0fb422aa4ea"
+  integrity sha512-jjEszZGrqJgB0JT+Jd1Te38MQ2MSNi8JPP4G+NIyz8PZNtCS3mNOfoDjKMe8CcmArKWrvsQBkeLI2SgzurbsUA==
   dependencies:
-    string-collapse-leading-whitespace "^6.1.7"
-    string-trim-spaces-only "^4.1.6"
+    string-collapse-leading-whitespace "^7.0.0"
+    string-trim-spaces-only "^5.0.0"
 
-ranges-sort@^5.1.6:
-  version "5.1.6"
-  resolved "https://registry.yarnpkg.com/ranges-sort/-/ranges-sort-5.1.6.tgz#dd552c979e56a3c0ba357261a61cf7cd5c43119b"
-  integrity sha512-/Mlg0Oe5iwu2lxeZGG/zzz92rQ6LpKimMx9uBj4EQthSSUDpvNeQzMthhdDBi/NGhG29rIWGpgl9jUHomUmX3Q==
+ranges-sort@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/ranges-sort/-/ranges-sort-6.0.0.tgz#2da64041fd83897c4606343f1f67247a9e7cae7f"
+  integrity sha512-DW2S2+KYccKEfBQauqcdiSUY6S54OaIkdrkfYJGMG1K3P5Fh7roBHjt3VGBppHAWYoHQyi1Y3xPNlo1ImFHGJQ==
 
 raw-body@2.4.3:
   version "2.4.3"
@@ -9557,15 +9557,15 @@ strict-uri-encode@^1.0.0:
   resolved "https://registry.yarnpkg.com/strict-uri-encode/-/strict-uri-encode-1.1.0.tgz#279b225df1d582b1f54e65addd4352e18faa0713"
   integrity sha1-J5siXfHVgrH1TmWt3UNS4Y+qBxM=
 
-string-collapse-leading-whitespace@^6.1.7:
-  version "6.1.7"
-  resolved "https://registry.yarnpkg.com/string-collapse-leading-whitespace/-/string-collapse-leading-whitespace-6.1.7.tgz#9973872a51f0b0d97398be965dd0e0a1ab74b20f"
-  integrity sha512-RGpJrs/C31mPyBPvmjcM16joFYaywAoJ8L9pWY/xFegkykFdMrg569ragafoJZgv485hEwWjihD5VgwJftrRmw==
+string-collapse-leading-whitespace@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/string-collapse-leading-whitespace/-/string-collapse-leading-whitespace-7.0.0.tgz#6484298d11b2f084cbce5814c01d9be43130402c"
+  integrity sha512-xLVSc89spJe3K2tiaeq03WjPiTmSLNeagrh4xCeByzYFFebe3C9D3pPkq/9lwe00o9fwRcuYUnlSDIGJMObk6g==
 
-string-left-right@^5.1.7:
-  version "5.1.7"
-  resolved "https://registry.yarnpkg.com/string-left-right/-/string-left-right-5.1.7.tgz#8a2dfd27596cdfa69927a4d568d837a2df66acab"
-  integrity sha512-WSFZJ/oy3Ako6VS3+MyA7S1OceG+RIFkPUQzHumtw/N8aAA5WafVgQg2AE9WQWZ7py9bJlcH50BjSo+PlN8xNw==
+string-left-right@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/string-left-right/-/string-left-right-6.0.0.tgz#36be524978e4360fb43ea9407d4611e1a7022d52"
+  integrity sha512-VOtUxVhWTE1TXins08DMSg/MugmENAk6fh4zZsnBWNIComV72wbFdiZwFFDvZpz4umZZepTurEPZhy3Yc8LsnQ==
   dependencies:
     lodash.clonedeep "^4.5.0"
     lodash.isplainobject "^4.0.6"
@@ -9583,23 +9583,23 @@ string-similarity@^4.0.4:
   resolved "https://registry.yarnpkg.com/string-similarity/-/string-similarity-4.0.4.tgz#42d01ab0b34660ea8a018da8f56a3309bb8b2a5b"
   integrity sha512-/q/8Q4Bl4ZKAPjj8WerIBJWALKkaPRfrvhfF8k/B23i4nzrlRj2/go1m90In7nG/3XDSbOo0+pu6RvCTM9RGMQ==
 
-string-strip-html@^12.0.0:
-  version "12.0.0"
-  resolved "https://registry.yarnpkg.com/string-strip-html/-/string-strip-html-12.0.0.tgz#d75df263dce22d0e29311b409dfc3ffff1f1128d"
-  integrity sha512-Ojx1qfh7zViiRhIUCtZoIWxtJbFCCy/VdamDBt0MOpERRb4ZDNzUAzdz8zbXihnTKqHdm/9rT12JHiMdI+2eGA==
+string-strip-html@^13.0.0:
+  version "13.0.0"
+  resolved "https://registry.yarnpkg.com/string-strip-html/-/string-strip-html-13.0.0.tgz#f6d14d1288ad78ceee790bdb2fcbf6232a054ed6"
+  integrity sha512-mV06P6R2BgZhFSWH635od3gFPuGIliyICl6/Ka32SJmzSjtf3xuREdTsvi1u9YiZ3j/0ckSjqXXdysXtrAdr0w==
   dependencies:
     html-entities "^2.3.3"
     lodash.isplainobject "^4.0.6"
     lodash.trim "^4.5.1"
     lodash.without "^4.4.0"
-    ranges-apply "^6.2.12"
-    ranges-push "^6.2.7"
-    string-left-right "^5.1.7"
+    ranges-apply "^7.0.0"
+    ranges-push "^7.0.0"
+    string-left-right "^6.0.0"
 
-string-trim-spaces-only@^4.1.6:
-  version "4.1.6"
-  resolved "https://registry.yarnpkg.com/string-trim-spaces-only/-/string-trim-spaces-only-4.1.6.tgz#a50bd9166febd31311aecbe95db49f750b36adad"
-  integrity sha512-rI++1I1wesrddwz1TH011+zNO0k+0u4b8RwDrzPlrQ3jvPrmrXfn5O5eWeLFuV/8zmPSXe5iq+G43hURZF89hQ==
+string-trim-spaces-only@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/string-trim-spaces-only/-/string-trim-spaces-only-5.0.0.tgz#3323f0882564e4e480aeb434f3731c1977e2e822"
+  integrity sha512-DKjl+UyNo48CrWbQZDR2AV/UEZcN34oCh+fvd7Lmz8QDpX2eeY9i6EPtML5vRGaXrt1ah3V+nXfkHqCDtvDm9w==
 
 string-width@^1.0.1:
   version "1.0.2"
