@@ -63,7 +63,7 @@ const handler: Handler = async (event: HandlerEvent) => {
       },
       body: JSON.stringify({
         text: responseText,
-        response_type: 'ephemeral',
+        response_type: 'in_channel',
       }),
     };
   } catch (error) {
