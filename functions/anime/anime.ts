@@ -14,7 +14,9 @@ const defaultParams: bodyParamsType = {
 const handler: Handler = async (event: HandlerEvent) => {
   const { body, httpMethod } = event;
 
-  const bodyParams: bodyParamsType = body ? JSON.parse(`{"${body.replace(/&/g, '", "').replace(/=/g, '": "')}"}`) : defaultParams;
+  const bodyParams: bodyParamsType = body
+    ? JSON.parse(`{"${body.replace(/&/g, '", "').replace(/=/g, '": "')}"}`)
+    : defaultParams;
 
   const securityToken: string = process.env.TOKEN || uuidv4();
 
@@ -61,7 +63,7 @@ const handler: Handler = async (event: HandlerEvent) => {
       },
       body: JSON.stringify({
         text: responseText,
-        response_type: 'in_channel',
+        response_type: 'ephemeral',
       }),
     };
   } catch (error) {
