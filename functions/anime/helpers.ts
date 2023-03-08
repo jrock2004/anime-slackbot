@@ -68,7 +68,7 @@ export const getExternalLinks = (
       if (isMarkdown) {
         externalLinks += `[${link.site}](${link.url}), `;
       } else {
-        externalLinks += `${link.site}, `;
+        externalLinks += `<${link.url}|${link.site}>, `;
       }
     });
     if (isMarkdown) {
