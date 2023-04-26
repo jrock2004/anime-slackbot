@@ -20,6 +20,7 @@ const handler: Handler = async (event: HandlerEvent) => {
 
   const securityTokenEnvVariable: string = process.env.TOKEN || uuidv4();
   const tokens = securityTokenEnvVariable.split(',');
+  const searchTerm = decodeURI(bodyParams.text.trim()).replaceAll('%3A', ':');
 
   if (httpMethod === 'GET') {
     return { statusCode: 404 };
@@ -40,7 +41,7 @@ const handler: Handler = async (event: HandlerEvent) => {
 
   // Call the API to get anime info
   const variables = {
-    anime: bodyParams.text,
+    anime: searchTerm,
   };
   const response = await searchApi(variables, animeQuery);
 
@@ -48,7 +49,7 @@ const handler: Handler = async (event: HandlerEvent) => {
   if ('errors' in response) {
     return {
       statusCode: 500,
-      body: `Something went wrong with looking up ${bodyParams.text}`,
+      body: `Something went wrong with looking up ${searchTerm}`,
     };
   }
 

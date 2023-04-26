@@ -5,7 +5,10 @@ import { animeModelType as Anime } from './anime.d';
 
 export const getBannerImage = (anime: Anime, isMarkdown?: boolean): string => {
   const title = anime.title.english || anime.title.romaji || anime.title.native;
-  if (isMarkdown) {
+
+  if (anime.bannerImage === null) {
+    return '';
+  } else if (isMarkdown) {
     return `[${title}](${anime.bannerImage})\n\n`;
   } else {
     return `${anime.bannerImage}\n\n`;
