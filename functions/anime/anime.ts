@@ -18,7 +18,8 @@ const handler: Handler = async (event: HandlerEvent) => {
     ? JSON.parse(`{"${body.replace(/&/g, '", "').replace(/=/g, '": "')}"}`)
     : defaultParams;
 
-  const securityToken: string = process.env.TOKEN || uuidv4();
+  const securityTokenEnvVariable: string = process.env.TOKEN || uuidv4();
+  const tokens = securityTokenEnvVariable.split(',');
 
   if (httpMethod === 'GET') {
     return { statusCode: 404 };
@@ -33,7 +34,7 @@ const handler: Handler = async (event: HandlerEvent) => {
   }
 
   // Check if token matches, if not return unauthorized
-  if (securityToken !== bodyParams.token) {
+  if (!tokens.includes(bodyParams.token)) {
     return { statusCode: 401 };
   }
 
