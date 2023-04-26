@@ -4,7 +4,7 @@
   "description": "A slackbot that allows you to look up your favorite anime",
   "main": "index.js",
   "scripts": {
-    "dev": "TOKEN=9999,2131234 netlify dev",
+    "dev": "TOKEN=9999 netlify dev",
     "test": "jest --env=jsdom",
     "test:watch": "jest --env=jsdom --watch",
     "test:coverage": "jest --env=jsdom --coverage",
