@@ -68,8 +68,12 @@ const handler: Handler = async (event: HandlerEvent) => {
         response_type: 'in_channel',
       }),
     };
-  } catch (error) {
-    return { statusCode: 500, body: error.toString() };
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      return { statusCode: 500, body: error.message };
+    }
+
+    return { statusCode: 500, body: 'An unknown error occurred' };
   }
 };
 
