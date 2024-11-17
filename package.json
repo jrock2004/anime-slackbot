@@ -25,29 +25,21 @@
     "url": "https://github.com/jrock2004/anime-slackbot/issues"
   },
   "homepage": "https://github.com/jrock2004/anime-slackbot#readme",
-  "eslintConfig": {
-    "parser": "@typescript-eslint/parser",
-    "plugins": [
-      "@typescript-eslint"
-    ],
-    "extends": [
-      "plugin:@typescript-eslint/recommended"
-    ]
-  },
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
+    "@eslint/js": "^9.15.0",
+    "@types/eslint__js": "^8.42.3",
     "@types/node": "^22.9.0",
     "@types/node-fetch": "^2.6.12",
     "@types/uuid": "^10.0.0",
-    "@typescript-eslint/eslint-plugin": "^8.14.0",
-    "@typescript-eslint/parser": "^8.14.0",
     "eslint": "^9.15.0",
     "husky": "^9.1.6",
     "netlify-cli": "^17.37.2",
     "prettier": "^3.3.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3",
+    "typescript-eslint": "^8.14.0",
     "vitest": "^2.1.5"
   },
   "dependencies": {
