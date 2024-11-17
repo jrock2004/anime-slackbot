@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "TOKEN=9999 netlify dev",
-    "test": "jest --env=jsdom",
-    "test:watch": "jest --env=jsdom --watch",
-    "test:coverage": "jest --env=jsdom --coverage",
+    "test": "vitest",
+    "test:watch": "vitest watch",
+    "test:coverage": "vitest run --coverage",
     "update": "pnpx npm-check-updates -u",
     "prepare": "husky install"
   },
@@ -37,7 +37,6 @@
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
-    "@types/jest": "^29.5.14",
     "@types/node": "^22.9.0",
     "@types/node-fetch": "^2.6.12",
     "@types/uuid": "^10.0.0",
@@ -45,12 +44,11 @@
     "@typescript-eslint/parser": "^8.14.0",
     "eslint": "^9.15.0",
     "husky": "^9.1.6",
-    "jest": "^29.7.0",
     "netlify-cli": "^17.37.2",
     "prettier": "^3.3.3",
-    "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
-    "typescript": "^5.6.3"
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.5"
   },
   "dependencies": {
     "@netlify/functions": "^2.8.2",
