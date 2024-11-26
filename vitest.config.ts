@@ -11,6 +11,7 @@ export default defineConfig({
         'commitlint.config.js',
         'eslint.config.mjs',
         'vitest.config.ts',
+        '**/AnimeModel.ts',
       ],
       provider: 'v8', // or 'v8' or 'instanbul'
       reporter: ['cobertura', 'text', 'json', 'html'],
