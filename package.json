@@ -25,29 +25,22 @@
     "url": "https://github.com/jrock2004/anime-slackbot/issues"
   },
   "homepage": "https://github.com/jrock2004/anime-slackbot#readme",
-  "eslintConfig": {
-    "parser": "@typescript-eslint/parser",
-    "plugins": [
-      "@typescript-eslint"
-    ],
-    "extends": [
-      "plugin:@typescript-eslint/recommended"
-    ]
-  },
   "devDependencies": {
-    "@commitlint/cli": "^19.5.0",
-    "@commitlint/config-conventional": "^19.5.0",
-    "@types/node": "^22.9.0",
+    "@commitlint/cli": "^19.6.0",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@eslint/js": "^9.15.0",
+    "@types/eslint__js": "^8.42.3",
+    "@types/node": "^22.9.4",
     "@types/node-fetch": "^2.6.12",
     "@types/uuid": "^10.0.0",
-    "@typescript-eslint/eslint-plugin": "^8.14.0",
-    "@typescript-eslint/parser": "^8.14.0",
+    "@vitest/coverage-v8": "2.1.5",
     "eslint": "^9.15.0",
-    "husky": "^9.1.6",
+    "husky": "^9.1.7",
     "netlify-cli": "^17.37.2",
     "prettier": "^3.3.3",
     "ts-node": "^10.9.2",
-    "typescript": "^5.6.3",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.16.0",
     "vitest": "^2.1.5"
   },
   "dependencies": {
@@ -61,7 +54,7 @@
     "node": ">=14.19.0"
   },
   "volta": {
-    "node": "16.20.0",
+    "node": "22.11.0",
     "yarn": "1.22.19"
   }
 }
