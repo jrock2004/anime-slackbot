@@ -211,7 +211,7 @@ test('anime with external links and markdown off return in slack syntax', () => 
   const results = getExternalLinks(mockAnime, false);
 
   expect(results.trim()).toStrictEqual(
-    '• *External Links:* Hulu, Official Site'
+    '• *External Links:* <http://www.hulu.com/death-note|Hulu>, <http://www.ntv.co.jp/deathnote/|Official Site>'
   );
 });
 
