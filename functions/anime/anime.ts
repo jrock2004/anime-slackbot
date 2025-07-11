@@ -1,9 +1,15 @@
 import { Handler, HandlerEvent } from '@netlify/functions';
-import { v4 as uuidv4 } from 'uuid';
 
 import { bodyParamsType } from './anime.d';
 import { animeQuery, getResponseText, searchApi } from './utils';
 import AnimeModel from './AnimeModel';
+import { CONFIG, getSecurityTokens } from './config';
+import {
+  validateBodyParams,
+  sanitizeSearchTerm,
+  parseSlackBody,
+  ValidationError,
+} from './validation';
 
 const defaultParams: bodyParamsType = {
   text: '',
@@ -14,66 +20,71 @@ const defaultParams: bodyParamsType = {
 const handler: Handler = async (event: HandlerEvent) => {
   const { body, httpMethod } = event;
 
-  const bodyParams: bodyParamsType = body
-    ? JSON.parse(`{"${body.replace(/&/g, '", "').replace(/=/g, '": "')}"}`)
-    : defaultParams;
-
-  const securityTokenEnvVariable: string = process.env.TOKEN || uuidv4();
-  const tokens = securityTokenEnvVariable.split(',');
-  const searchTerm = decodeURI(bodyParams.text.trim()).replaceAll('%3A', ':');
-
-  if (httpMethod === 'GET') {
-    return { statusCode: 404 };
+  // Handle GET requests
+  if (httpMethod === CONFIG.HTTP_METHODS.GET) {
+    return { statusCode: CONFIG.STATUS_CODES.NOT_FOUND };
   }
-
-  // Check if params are empty, if so return error
-  if (!bodyParams.response_url || !bodyParams.text || !bodyParams.token) {
-    return {
-      statusCode: 400,
-      body: JSON.stringify({ message: 'Missing required parameters' }),
-    };
-  }
-
-  // Check if token matches, if not return unauthorized
-  if (!tokens.includes(bodyParams.token)) {
-    return { statusCode: 401 };
-  }
-
-  // Call the API to get anime info
-  const variables = {
-    anime: searchTerm,
-  };
-  const response = await searchApi(variables, animeQuery);
-
-  // Parse the response to to what slack expects
-  if ('errors' in response) {
-    return {
-      statusCode: 500,
-      body: `Something went wrong with looking up ${searchTerm}`,
-    };
-  }
-
-  const isMarkdown = bodyParams.response_url === 'markdown' || false;
-  const anime = new AnimeModel(response.data.Media);
-  const responseText = getResponseText(anime, isMarkdown);
 
   try {
+    // Parse and validate request body
+    const bodyParams: bodyParamsType = body
+      ? parseSlackBody(body)
+      : defaultParams;
+
+    validateBodyParams(bodyParams);
+
+    // Validate security token
+    const securityTokens = getSecurityTokens();
+    if (!securityTokens.includes(bodyParams.token)) {
+      return { statusCode: CONFIG.STATUS_CODES.UNAUTHORIZED };
+    }
+
+    // Prepare search
+    const searchTerm = sanitizeSearchTerm(bodyParams.text);
+    const variables = { anime: searchTerm };
+
+    // Call the API
+    const response = await searchApi(variables, animeQuery);
+
+    // Handle API errors
+    if ('errors' in response) {
+      return {
+        statusCode: CONFIG.STATUS_CODES.INTERNAL_SERVER_ERROR,
+        body: `Something went wrong with looking up ${searchTerm}`,
+      };
+    }
+
+    // Generate response
+    const isMarkdown = bodyParams.response_url === 'markdown';
+    const anime = new AnimeModel(response.data.Media);
+    const responseText = getResponseText(anime, isMarkdown);
+
     return {
-      statusCode: 200,
+      statusCode: CONFIG.STATUS_CODES.OK,
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': CONFIG.CONTENT_TYPES.JSON,
       },
       body: JSON.stringify({
         text: responseText,
-        response_type: 'in_channel',
+        response_type: CONFIG.RESPONSE_TYPES.IN_CHANNEL,
       }),
     };
   } catch (error: unknown) {
-    if (error instanceof Error) {
-      return { statusCode: 500, body: error.message };
+    if (error instanceof ValidationError) {
+      return {
+        statusCode: CONFIG.STATUS_CODES.BAD_REQUEST,
+        body: JSON.stringify({ message: error.message }),
+      };
     }
 
-    return { statusCode: 500, body: 'An unknown error occurred' };
+    const errorMessage =
+      error instanceof Error ? error.message : 'An unknown error occurred';
+    console.error('Unexpected error:', errorMessage);
+
+    return {
+      statusCode: CONFIG.STATUS_CODES.INTERNAL_SERVER_ERROR,
+      body: JSON.stringify({ message: 'Internal server error' }),
+    };
   }
 };
 

@@ -21,8 +21,17 @@ type nextAiringEpisodeType = {
 export type animeModelType = {
   id: number;
   bannerImage: string;
-  title: { [key: string]: string };
-  status: string;
+  title: {
+    romaji?: string;
+    english?: string;
+    native?: string;
+  };
+  status:
+    | 'FINISHED'
+    | 'RELEASING'
+    | 'NOT_YET_RELEASED'
+    | 'CANCELLED'
+    | 'HIATUS';
   description: string;
   nextAiringEpisode: nextAiringEpisodeType;
   episodes: number;
@@ -34,4 +43,8 @@ export type animeResponseType = {
   data: {
     Media: animeModelType;
   };
+};
+
+export type ApiErrorResponse = {
+  errors: Array<{ message: string }>;
 };

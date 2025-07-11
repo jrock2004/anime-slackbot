@@ -1,10 +1,13 @@
 import moment from 'moment';
 import { stripHtml } from 'string-strip-html';
 
-import { animeModelType as Anime } from './anime.d';
+import AnimeModel from './AnimeModel';
 
-export const getBannerImage = (anime: Anime, isMarkdown?: boolean): string => {
-  const title = anime.title.english || anime.title.romaji || anime.title.native;
+export const getBannerImage = (
+  anime: AnimeModel,
+  isMarkdown?: boolean
+): string => {
+  const title = anime.getPreferredTitle();
 
   if (anime.bannerImage === null) {
     return '';
@@ -15,8 +18,8 @@ export const getBannerImage = (anime: Anime, isMarkdown?: boolean): string => {
   }
 };
 
-export const getTitle = (anime: Anime, isMarkdown?: boolean): string => {
-  const title = anime.title.english || anime.title.romaji || anime.title.native;
+export const getTitle = (anime: AnimeModel, isMarkdown?: boolean): string => {
+  const title = anime.getPreferredTitle();
   if (isMarkdown) {
     return `# ${title} - ${anime.status}\n`;
   } else {
@@ -24,14 +27,17 @@ export const getTitle = (anime: Anime, isMarkdown?: boolean): string => {
   }
 };
 
-export const getDescription = (anime: Anime): string => {
+export const getDescription = (anime: AnimeModel): string => {
   return `> ${stripHtml(anime.description).result.replace(/\n/g, ' ')}\n\n`;
 };
 
-export const getNextEpisode = (anime: Anime, isMarkdown?: boolean): string => {
-  if (anime.status !== 'FINISHED' && anime.nextAiringEpisode) {
-    const nextEpisodeInSeconds = anime.nextAiringEpisode.timeUntilAiring;
-    const nextEpisode = anime.nextAiringEpisode.episode;
+export const getNextEpisode = (
+  anime: AnimeModel,
+  isMarkdown?: boolean
+): string => {
+  if (anime.hasNextEpisode()) {
+    const nextEpisodeInSeconds = anime.nextAiringEpisode.timeUntilAiring!;
+    const nextEpisode = anime.nextAiringEpisode.episode!;
     const currentDate = moment(new Date());
     const duration = currentDate.add(nextEpisodeInSeconds, 'seconds');
     const nextEpisodeDate = `${duration.days()}d ${duration.hours()}h ${duration.minutes()}m`;
@@ -50,7 +56,7 @@ export const getNextEpisode = (anime: Anime, isMarkdown?: boolean): string => {
   }
 };
 
-export const getGenres = (anime: Anime, isMarkdown?: boolean): string => {
+export const getGenres = (anime: AnimeModel, isMarkdown?: boolean): string => {
   const genres: Array<string> = [...anime.genres];
 
   if (isMarkdown) {
@@ -61,7 +67,7 @@ export const getGenres = (anime: Anime, isMarkdown?: boolean): string => {
 };
 
 export const getExternalLinks = (
-  anime: Anime,
+  anime: AnimeModel,
   isMarkdown?: boolean
 ): string => {
   let externalLinks = '';

@@ -5,11 +5,19 @@
   "main": "index.js",
   "scripts": {
     "dev": "TOKEN=9999 netlify dev",
+    "build": "tsc --noEmit",
     "test": "vitest",
     "test:watch": "vitest watch",
     "test:coverage": "vitest run --coverage",
+    "test:ci": "vitest run --coverage --reporter=verbose",
+    "lint": "eslint functions/**/*.ts",
+    "lint:fix": "eslint functions/**/*.ts --fix",
+    "format": "prettier --write functions/**/*.{ts,js,json}",
+    "format:check": "prettier --check functions/**/*.{ts,js,json}",
+    "type-check": "tsc --noEmit",
     "update": "pnpx npm-check-updates -u",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "validate": "npm run type-check && npm run lint && npm run test:ci"
   },
   "repository": {
     "type": "git",
