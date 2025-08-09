@@ -1,37 +1,16 @@
-export type bodyParamsType = {
-  text: string;
-  response_url: string;
-  token: string;
-};
+import type { Anime, SlackParams, SearchVariables } from './types';
 
-export type searchVariablesType = {
-  anime: string;
-};
-
-type externalLinksType = {
-  url: string;
-  site: string;
-};
-
-type nextAiringEpisodeType = {
-  timeUntilAiring?: number;
-  episode?: number;
-};
-
-export type animeModelType = {
-  id: number;
-  bannerImage: string;
-  title: { [key: string]: string };
-  status: string;
-  description: string;
-  nextAiringEpisode: nextAiringEpisodeType;
-  episodes: number;
-  genres: string[];
-  externalLinks: externalLinksType[];
-};
-
-export type animeResponseType = {
+export interface AnimeApiResponse {
   data: {
-    Media: animeModelType;
+    Media: Anime;
   };
-};
+}
+
+export interface ApiErrorResponse {
+  errors: Array<{ message: string }>;
+}
+
+export type bodyParamsType = SlackParams;
+export type searchVariablesType = SearchVariables;
+export type animeModelType = Anime;
+export type animeResponseType = AnimeApiResponse;

@@ -1,35 +1,30 @@
-import { animeModelType } from './anime.d';
+import type {
+  Anime,
+  AnimeTitle,
+  ExternalLink,
+  NextAiringEpisode,
+} from './types';
 
 export default class AnimeModel {
-  id;
-  bannerImage;
-  title;
-  status;
-  description;
-  nextAiringEpisode;
-  episodes;
-  genres;
-  externalLinks;
+  readonly id: number;
+  readonly bannerImage: string | null;
+  readonly title: AnimeTitle;
+  readonly status: string;
+  readonly description: string;
+  readonly nextAiringEpisode: NextAiringEpisode;
+  readonly episodes: number;
+  readonly genres: string[];
+  readonly externalLinks: ExternalLink[];
 
-  constructor({
-    id,
-    bannerImage,
-    title,
-    status,
-    description,
-    nextAiringEpisode,
-    episodes,
-    genres,
-    externalLinks,
-  }: animeModelType) {
-    this.id = id;
-    this.bannerImage = bannerImage;
-    this.title = title;
-    this.status = status;
-    this.description = description;
-    (this.nextAiringEpisode = nextAiringEpisode ? nextAiringEpisode : {}),
-      (this.episodes = episodes);
-    this.genres = genres;
-    this.externalLinks = externalLinks;
+  constructor(anime: Anime) {
+    this.id = anime.id;
+    this.bannerImage = anime.bannerImage;
+    this.title = anime.title;
+    this.status = anime.status;
+    this.description = anime.description;
+    this.nextAiringEpisode = anime.nextAiringEpisode ?? {};
+    this.episodes = anime.episodes;
+    this.genres = anime.genres;
+    this.externalLinks = anime.externalLinks;
   }
 }

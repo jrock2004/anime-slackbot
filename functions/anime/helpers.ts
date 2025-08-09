@@ -1,14 +1,16 @@
 import moment from 'moment';
 import { stripHtml } from 'string-strip-html';
 
-import { animeModelType as Anime } from './anime.d';
+import type { Anime } from './types';
 
 export const getBannerImage = (anime: Anime, isMarkdown?: boolean): string => {
   const title = anime.title.english || anime.title.romaji || anime.title.native;
 
-  if (anime.bannerImage === null) {
+  if (!anime.bannerImage) {
     return '';
-  } else if (isMarkdown) {
+  }
+
+  if (isMarkdown) {
     return `[${title}](${anime.bannerImage})\n\n`;
   } else {
     return `${anime.bannerImage}\n\n`;
@@ -29,12 +31,19 @@ export const getDescription = (anime: Anime): string => {
 };
 
 export const getNextEpisode = (anime: Anime, isMarkdown?: boolean): string => {
-  if (anime.status !== 'FINISHED' && anime.nextAiringEpisode) {
+  if (
+    anime.status !== 'FINISHED' &&
+    anime.nextAiringEpisode?.timeUntilAiring !== undefined &&
+    anime.nextAiringEpisode?.timeUntilAiring !== null
+  ) {
     const nextEpisodeInSeconds = anime.nextAiringEpisode.timeUntilAiring;
     const nextEpisode = anime.nextAiringEpisode.episode;
-    const currentDate = moment(new Date());
-    const duration = currentDate.add(nextEpisodeInSeconds, 'seconds');
-    const nextEpisodeDate = `${duration.days()}d ${duration.hours()}h ${duration.minutes()}m`;
+
+    const duration = moment.duration(nextEpisodeInSeconds, 'seconds');
+    const days = Math.floor(duration.asDays());
+    const hours = duration.hours();
+    const minutes = duration.minutes();
+    const nextEpisodeDate = `${days}d ${hours}h ${minutes}m`;
 
     if (isMarkdown) {
       return `* **Next Episode:** ${nextEpisode} will air in ${nextEpisodeDate}\n`;
@@ -51,12 +60,12 @@ export const getNextEpisode = (anime: Anime, isMarkdown?: boolean): string => {
 };
 
 export const getGenres = (anime: Anime, isMarkdown?: boolean): string => {
-  const genres: Array<string> = [...anime.genres];
+  const genres = anime.genres.join(', ');
 
   if (isMarkdown) {
-    return `* *Genres:* ${genres.join(', ').replace(/,\s*$/, '')}\n`;
+    return `* *Genres:* ${genres}\n`;
   } else {
-    return `• *Genres:* ${genres.join(', ').replace(/,\s*$/, '')}\n`;
+    return `• *Genres:* ${genres}\n`;
   }
 };
 
@@ -64,23 +73,25 @@ export const getExternalLinks = (
   anime: Anime,
   isMarkdown?: boolean
 ): string => {
-  let externalLinks = '';
-
-  if (anime.externalLinks.length > 0) {
-    anime.externalLinks.map((link) => {
-      if (isMarkdown) {
-        externalLinks += `[${link.site}](${link.url}), `;
-      } else {
-        externalLinks += `<${link.url}|${link.site}>, `;
-      }
-    });
-    if (isMarkdown) {
-      return `* **External Links:** ${externalLinks.replace(/,\s*$/, '')}\n`;
-    } else {
-      return `• *External Links:* ${externalLinks.replace(/,\s*$/, '')}\n`;
-    }
+  if (anime.externalLinks.length === 0) {
+    return '';
   }
-  return '';
+
+  const links = anime.externalLinks
+    .map((link) => {
+      if (isMarkdown) {
+        return `[${link.site}](${link.url})`;
+      } else {
+        return `<${link.url}|${link.site}>`;
+      }
+    })
+    .join(', ');
+
+  if (isMarkdown) {
+    return `* **External Links:** ${links}\n`;
+  } else {
+    return `• *External Links:* ${links}\n`;
+  }
 };
 
 export const getSource = (isMarkdown?: boolean): string => {

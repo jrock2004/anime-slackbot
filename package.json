@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "TOKEN=9999 netlify dev",
     "test": "vitest",
+    "test:ci": "vitest run --reporter=verbose",
     "test:watch": "vitest watch",
     "test:coverage": "vitest run --coverage",
     "update": "pnpx npm-check-updates -u",
@@ -36,6 +37,7 @@
     "@vitest/coverage-v8": "2.1.5",
     "eslint": "^9.31.0",
     "husky": "^9.1.7",
+    "msw": "^2.10.4",
     "netlify-cli": "^17.38.1",
     "prettier": "^3.6.2",
     "ts-node": "^10.9.2",
