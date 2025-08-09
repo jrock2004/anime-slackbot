@@ -1,22 +1,32 @@
 import { Handler, HandlerEvent } from '@netlify/functions';
 import { v4 as uuidv4 } from 'uuid';
 
-import { bodyParamsType } from './anime.d';
+import type { SlackParams } from './types';
 import { animeQuery, getResponseText, searchApi } from './utils';
 import AnimeModel from './AnimeModel';
 
-const defaultParams: bodyParamsType = {
-  text: '',
-  response_url: '',
-  token: '',
+const parseSlackBody = (body: string | null): SlackParams => {
+  if (!body) {
+    return { text: '', response_url: '', token: '' };
+  }
+
+  try {
+    const params = new URLSearchParams(body);
+
+    return {
+      text: params.get('text') ?? '',
+      response_url: params.get('response_url') ?? '',
+      token: params.get('token') ?? '',
+    };
+  } catch {
+    return { text: '', response_url: '', token: '' };
+  }
 };
 
 const handler: Handler = async (event: HandlerEvent) => {
   const { body, httpMethod } = event;
 
-  const bodyParams: bodyParamsType = body
-    ? JSON.parse(`{"${body.replace(/&/g, '", "').replace(/=/g, '": "')}"}`)
-    : defaultParams;
+  const bodyParams = parseSlackBody(body);
 
   const securityTokenEnvVariable: string = process.env.TOKEN || uuidv4();
   const tokens = securityTokenEnvVariable.split(',');

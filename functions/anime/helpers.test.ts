@@ -160,10 +160,12 @@ test('not finished anime with markdown off returns when next ep will air', () =>
   };
 
   const results = getNextEpisode(mock, false);
-  const currentDate = moment(new Date());
-  const nextEpisodeInSeconds = 92871;
-  const duration = currentDate.add(nextEpisodeInSeconds, 'seconds');
-  const nextEpisodeDate = `${duration.days()}d ${duration.hours()}h ${duration.minutes()}m`;
+
+  const duration = moment.duration(92871, 'seconds');
+  const days = Math.floor(duration.asDays());
+  const hours = duration.hours();
+  const minutes = duration.minutes();
+  const nextEpisodeDate = `${days}d ${hours}h ${minutes}m`;
 
   expect(results.trim()).toStrictEqual(
     `• *Next Episode:* 986 will air in ${nextEpisodeDate}`
@@ -181,10 +183,11 @@ test('not finished anime with markdown on returns when next ep will air', () => 
 
   const results = getNextEpisode(mock, true);
 
-  const currentDate = moment(new Date());
-  const nextEpisodeInSeconds = 92871;
-  const duration = currentDate.add(nextEpisodeInSeconds, 'seconds');
-  const nextEpisodeDate = `${duration.days()}d ${duration.hours()}h ${duration.minutes()}m`;
+  const duration = moment.duration(92871, 'seconds');
+  const days = Math.floor(duration.asDays());
+  const hours = duration.hours();
+  const minutes = duration.minutes();
+  const nextEpisodeDate = `${days}d ${hours}h ${minutes}m`;
 
   expect(results.trim()).toStrictEqual(
     `* **Next Episode:** 986 will air in ${nextEpisodeDate}`

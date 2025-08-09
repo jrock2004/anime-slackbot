@@ -1,10 +1,7 @@
-import fetch, { Response } from 'node-fetch';
+import fetch from 'node-fetch';
 
-import {
-  animeModelType,
-  animeResponseType,
-  searchVariablesType,
-} from './anime.d';
+import type { Anime, SearchVariables } from './types';
+import type { AnimeApiResponse } from './anime.d';
 import {
   getBannerImage,
   getTitle,
@@ -16,9 +13,9 @@ import {
 } from './helpers';
 
 export const searchApi = async (
-  variables: searchVariablesType,
+  variables: SearchVariables,
   query: string
-): Promise<animeResponseType> => {
+): Promise<AnimeApiResponse | { errors: Array<{ message: string }> }> => {
   try {
     const url = 'https://graphql.anilist.co';
     const options = {
@@ -33,16 +30,28 @@ export const searchApi = async (
       }),
     };
 
-    return await fetch(url, options).then((res: Response) => res.json());
+    const response = await fetch(url, options);
+
+    if (!response.ok) {
+      return {
+        errors: [{ message: `HTTP error! status: ${response.status}` }],
+      };
+    }
+
+    return (await response.json()) as AnimeApiResponse;
   } catch (error) {
-    return error.message;
+    return {
+      errors: [
+        {
+          message:
+            error instanceof Error ? error.message : 'Unknown error occurred',
+        },
+      ],
+    };
   }
 };
 
-export const getResponseText = (
-  anime: animeModelType,
-  isMarkdown: boolean
-): string => {
+export const getResponseText = (anime: Anime, isMarkdown: boolean): string => {
   let responseText = '';
 
   responseText += getBannerImage(anime, isMarkdown);

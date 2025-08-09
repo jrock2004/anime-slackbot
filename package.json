@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "TOKEN=9999 netlify dev",
     "test": "vitest",
+    "test:ci": "vitest run --reporter=verbose",
     "test:watch": "vitest watch",
     "test:coverage": "vitest run --coverage",
     "update": "pnpx npm-check-updates -u",
