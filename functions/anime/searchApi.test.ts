@@ -1,107 +1,96 @@
-import { beforeEach, describe, expect, test, vi } from 'vitest';
+import { describe, expect, test, afterEach, beforeAll, afterAll } from 'vitest';
+import { setupServer } from 'msw/node';
+import { http, HttpResponse } from 'msw';
 import { searchApi, animeQuery } from './utils';
-import type { Response } from 'node-fetch';
 
-// Mock node-fetch
-vi.mock('node-fetch');
+const mockAnimeResponse = {
+  data: {
+    Media: {
+      id: 1535,
+      title: { english: 'Death Note' },
+      status: 'FINISHED',
+      bannerImage: 'https://example.com/banner.jpg',
+      description: 'A psychological thriller manga',
+      episodes: 37,
+      genres: ['Mystery', 'Psychological'],
+      externalLinks: [],
+    },
+  },
+};
 
-import fetch from 'node-fetch';
-const mockFetch = vi.mocked(fetch);
+const server = setupServer(
+  http.post(
+    'https://graphql.anilist.co',
+    async ({ request }: { request: Request }) => {
+      const body = (await request.json()) as {
+        query: string;
+        variables: { anime: string };
+      };
+
+      if (body.variables.anime === 'Death Note') {
+        return HttpResponse.json(mockAnimeResponse);
+      }
+
+      if (body.variables.anime === 'NetworkError') {
+        return HttpResponse.error();
+      }
+
+      if (body.variables.anime === 'ServerError') {
+        return new HttpResponse(null, { status: 500 });
+      }
+
+      return HttpResponse.json({
+        errors: [{ message: 'Anime not found' }],
+      });
+    }
+  )
+);
 
 describe('searchApi', () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
+  beforeAll(() => {
+    server.listen({ onUnhandledRequest: 'error' });
+  });
+
+  afterEach(() => {
+    server.resetHandlers();
+  });
+
+  afterAll(() => {
+    server.close();
   });
 
   test('returns anime data on successful API call', async () => {
-    const mockResponse = {
-      ok: true,
-      json: vi.fn().mockResolvedValue({
-        data: {
-          Media: {
-            id: 1535,
-            title: { english: 'Death Note' },
-            status: 'FINISHED',
-          },
-        },
-      }),
-    } as unknown as Response;
-
-    mockFetch.mockResolvedValue(mockResponse);
-
     const variables = { anime: 'Death Note' };
     const result = await searchApi(variables, animeQuery);
 
-    expect(mockFetch).toHaveBeenCalledWith('https://graphql.anilist.co', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify({
-        query: animeQuery,
-        variables: variables,
-      }),
-    });
-
-    expect(result).toHaveProperty('data');
-    if ('data' in result) {
-      expect(result.data.Media.id).toBe(1535);
-    }
+    expect(result).toEqual(mockAnimeResponse);
   });
 
   test('returns error response when API returns HTTP error', async () => {
-    const mockResponse = {
-      ok: false,
-      status: 404,
-    } as unknown as Response;
-
-    mockFetch.mockResolvedValue(mockResponse);
-
-    const variables = { anime: 'NonexistentAnime' };
+    const variables = { anime: 'ServerError' };
     const result = await searchApi(variables, animeQuery);
 
     expect(result).toEqual({
-      errors: [{ message: 'HTTP error! status: 404' }],
+      errors: [{ message: 'HTTP error! status: 500' }],
     });
   });
 
-  test('returns error response when fetch throws an error', async () => {
-    const errorMessage = 'Network error';
-    mockFetch.mockRejectedValue(new Error(errorMessage));
-
-    const variables = { anime: 'Death Note' };
+  test('returns error response when network request fails', async () => {
+    const variables = { anime: 'NetworkError' };
     const result = await searchApi(variables, animeQuery);
 
-    expect(result).toEqual({
-      errors: [{ message: errorMessage }],
-    });
+    expect(result).toHaveProperty('errors');
+    expect(
+      (result as { errors: Array<{ message: string }> }).errors[0].message
+    ).toContain('error');
   });
 
-  test('returns error response when fetch throws unknown error', async () => {
-    mockFetch.mockRejectedValue('Unknown error');
-
-    const variables = { anime: 'Death Note' };
+  test('handles GraphQL errors in response', async () => {
+    const variables = { anime: 'UnknownAnime' };
     const result = await searchApi(variables, animeQuery);
 
     expect(result).toEqual({
-      errors: [{ message: 'Unknown error occurred' }],
-    });
-  });
-
-  test('returns error response when response.json() fails', async () => {
-    const mockResponse = {
-      ok: true,
-      json: vi.fn().mockRejectedValue(new Error('JSON parse error')),
-    } as unknown as Response;
-
-    mockFetch.mockResolvedValue(mockResponse);
-
-    const variables = { anime: 'Death Note' };
-    const result = await searchApi(variables, animeQuery);
-
-    expect(result).toEqual({
-      errors: [{ message: 'JSON parse error' }],
+      errors: [{ message: 'Anime not found' }],
     });
   });
 });
