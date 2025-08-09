@@ -10,7 +10,7 @@
     "test:watch": "vitest watch",
     "test:coverage": "vitest run --coverage",
     "update": "pnpx npm-check-updates -u",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
@@ -29,27 +29,27 @@
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
-    "@eslint/js": "^9.31.0",
+    "@eslint/js": "^9.33.0",
     "@types/eslint__js": "^8.42.3",
-    "@types/node": "^22.16.3",
-    "@types/node-fetch": "^2.6.12",
+    "@types/node": "^22.17.1",
+    "@types/node-fetch": "^2.6.13",
     "@types/uuid": "^10.0.0",
     "@vitest/coverage-v8": "2.1.5",
-    "eslint": "^9.31.0",
+    "eslint": "^9.33.0",
     "husky": "^9.1.7",
     "msw": "^2.10.4",
     "netlify-cli": "^17.38.1",
     "prettier": "^3.6.2",
     "ts-node": "^10.9.2",
-    "typescript": "^5.8.3",
-    "typescript-eslint": "^8.36.0",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.39.0",
     "vitest": "^2.1.9"
   },
   "dependencies": {
     "@netlify/functions": "^2.8.2",
     "moment": "^2.30.1",
     "node-fetch": "^3.3.2",
-    "string-strip-html": "^13.4.12",
+    "string-strip-html": "^13.4.13",
     "uuid": "^11.1.0"
   },
   "engines": {
