@@ -31,7 +31,11 @@ export const getDescription = (anime: Anime): string => {
 };
 
 export const getNextEpisode = (anime: Anime, isMarkdown?: boolean): string => {
-  if (anime.status !== 'FINISHED' && anime.nextAiringEpisode?.timeUntilAiring) {
+  if (
+    anime.status !== 'FINISHED' &&
+    anime.nextAiringEpisode?.timeUntilAiring !== undefined &&
+    anime.nextAiringEpisode?.timeUntilAiring !== null
+  ) {
     const nextEpisodeInSeconds = anime.nextAiringEpisode.timeUntilAiring;
     const nextEpisode = anime.nextAiringEpisode.episode;
 
