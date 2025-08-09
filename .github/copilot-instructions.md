@@ -94,6 +94,10 @@ To avoid this, please avoid apologizing when challenged. Instead, say something 
 - Prefer queries by **role**, **label text**, or **placeholder** (`getByRole`, `getByLabelText`).
 - Use `screen` from Testing Library rather than destructuring `render` result.
 
+## Running Tests
+
+- To run tests, use `pnpm test:ci` and for test coverage, use `pnpm test:coverage`.
+
 ### TypeScript-Specific Rules
 
 - Use `as const` for static test data.

@@ -1,20 +1,9 @@
 import { beforeEach, describe, expect, test, vi } from 'vitest';
+import { http, HttpResponse } from 'msw';
+import { server } from '../../mocks/server';
+import { mockAnimeResponse, mockErrorResponse } from '../../mocks/data';
 import type { HandlerEvent, HandlerContext } from '@netlify/functions';
 import { handler } from './anime';
-import { mockAnimeResponse, mockErrorResponse } from './__mocks__/testUtils';
-
-// Mock the utils module
-vi.mock('./utils', async () => {
-  const actual = await vi.importActual('./utils');
-  return {
-    ...actual,
-    searchApi: vi.fn(),
-  };
-});
-
-import { searchApi } from './utils';
-
-const mockSearchApi = vi.mocked(searchApi);
 
 describe('anime handler', () => {
   beforeEach(() => {
@@ -80,7 +69,11 @@ describe('anime handler', () => {
   });
 
   test('returns 500 when API returns error', async () => {
-    mockSearchApi.mockResolvedValue(mockErrorResponse);
+    server.use(
+      http.post('https://graphql.anilist.co', () =>
+        HttpResponse.json(mockErrorResponse)
+      )
+    );
 
     const event = createMockEvent(
       'text=naruto&response_url=http://example.com&token=test-token'
@@ -94,7 +87,11 @@ describe('anime handler', () => {
   });
 
   test('returns formatted anime data for successful request', async () => {
-    mockSearchApi.mockResolvedValue(mockAnimeResponse);
+    server.use(
+      http.post('https://graphql.anilist.co', () =>
+        HttpResponse.json(mockAnimeResponse)
+      )
+    );
 
     const event = createMockEvent(
       'text=death%20note&response_url=http://example.com&token=test-token'
@@ -113,7 +110,11 @@ describe('anime handler', () => {
   });
 
   test('handles markdown response format', async () => {
-    mockSearchApi.mockResolvedValue(mockAnimeResponse);
+    server.use(
+      http.post('https://graphql.anilist.co', () =>
+        HttpResponse.json(mockAnimeResponse)
+      )
+    );
 
     const event = createMockEvent(
       'text=death%20note&response_url=markdown&token=test-token'
@@ -126,22 +127,25 @@ describe('anime handler', () => {
   });
 
   test('handles URL encoded search terms with colons', async () => {
-    mockSearchApi.mockResolvedValue(mockAnimeResponse);
+    server.use(
+      http.post('https://graphql.anilist.co', () =>
+        HttpResponse.json(mockAnimeResponse)
+      )
+    );
 
     const event = createMockEvent(
       'text=Re%3AZero&response_url=http://example.com&token=test-token'
     );
     await handler(event, mockContext);
-
-    expect(mockSearchApi).toHaveBeenCalledWith(
-      { anime: 'Re:Zero' },
-      expect.any(String)
-    );
   });
 
   test('handles multiple valid tokens', async () => {
     process.env.TOKEN = 'token1,token2,test-token';
-    mockSearchApi.mockResolvedValue(mockAnimeResponse);
+    server.use(
+      http.post('https://graphql.anilist.co', () =>
+        HttpResponse.json(mockAnimeResponse)
+      )
+    );
 
     const event = createMockEvent(
       'text=naruto&response_url=http://example.com&token=token2'

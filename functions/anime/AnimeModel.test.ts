@@ -1,33 +1,9 @@
 import { describe, expect, test } from 'vitest';
 import AnimeModel from './AnimeModel';
+import { mockAnimeData } from '../../mocks/data';
 import type { Anime } from './types';
 
 describe('AnimeModel', () => {
-  const mockAnimeData: Anime = {
-    id: 1535,
-    bannerImage:
-      'https://s4.anilist.co/file/anilistcdn/media/anime/banner/1535.jpg',
-    title: {
-      romaji: 'Death Note',
-      english: 'Death Note',
-      native: 'DEATH NOTE',
-    },
-    status: 'FINISHED',
-    description: 'Light Yagami is a genius high school student.',
-    nextAiringEpisode: {
-      timeUntilAiring: 92871,
-      episode: 986,
-    },
-    episodes: 37,
-    genres: ['Mystery', 'Psychological', 'Supernatural', 'Thriller'],
-    externalLinks: [
-      {
-        url: 'http://www.hulu.com/death-note',
-        site: 'Hulu',
-      },
-    ],
-  };
-
   test('creates AnimeModel with all properties', () => {
     const anime = new AnimeModel(mockAnimeData);
 
@@ -41,9 +17,7 @@ describe('AnimeModel', () => {
       native: 'DEATH NOTE',
     });
     expect(anime.status).toBe('FINISHED');
-    expect(anime.description).toBe(
-      'Light Yagami is a genius high school student.'
-    );
+    expect(anime.description).toBe(mockAnimeData.description);
     expect(anime.nextAiringEpisode).toEqual({
       timeUntilAiring: 92871,
       episode: 986,
@@ -59,6 +33,10 @@ describe('AnimeModel', () => {
       {
         url: 'http://www.hulu.com/death-note',
         site: 'Hulu',
+      },
+      {
+        url: 'http://www.ntv.co.jp/deathnote/',
+        site: 'Official Site',
       },
     ]);
   });
